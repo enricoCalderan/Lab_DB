@@ -80,5 +80,5 @@ CREATE TABLE WaitingList(
     course CHAR(6) REFERENCES LimitedCourses(code),
     position INT NOT NULL CHECK (position > 0),
     PRIMARY KEY(student, course),
-    UNIQUE (student, position)
+    UNIQUE (course, position)
 );
