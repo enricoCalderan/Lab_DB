@@ -26,7 +26,6 @@ HostedBy(_department_, _program_)
   program -> Programs.name
 
 StudentBranches(_student_, branch, program)
-  student -> Students.idnr
   (branch, program) -> Branches.(name, program)
   (student, program) -> Students.(idnr, program)
 
@@ -62,4 +61,3 @@ WaitingList(_student_, _course_, position)
   student -> Students.idnr
   course -> LimitedCourses.code
   UNIQUE (course, position)
-
