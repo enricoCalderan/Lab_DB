@@ -1,2 +1,65 @@
 -- This file will have your final schema. It should be based on ER-schema but extended with unique constraints and an additional fix. 
 
+Departments(_name_, abbreviation)
+    UNIQUE (abbreviation)
+
+Programs(_name_, abbreviation)
+
+Branches(_name_, _program_)
+  program -> Programs.name
+
+Students(_idnr_, name, login, program)
+  program -> Programs.name
+  UNIQUE (login)
+  UNIQUE (idnr,program)
+
+Courses(_code_, name, credits, department)
+  department -> Departments.name
+
+LimitedCourses(_code_, capacity)
+  code -> Courses.code
+
+Classifications(_name_)
+
+HostedBy(_department_, _program_)
+  department -> Departments.name
+  program -> Programs.name
+
+StudentBranches(_student_, branch, program)
+  student -> Students.idnr
+  (branch, program) -> Branches.(name, program)
+  (student, program) -> Students.(idnr, program)
+
+Classified(_course_, _classification_)
+  course -> Courses.code
+  classification -> Classifications.name
+
+Prerequisites(_course_, _prerequisite_)
+  course -> Courses.code
+  prerequisite -> Courses.code
+
+MandatoryProgramCourses(_program_, _course_)
+  program -> Programs.name
+  course -> Courses.code
+
+MandatoryBranchCourses(_course_, _branch_, _program_)
+  course -> Courses.code
+  (branch, program) -> Branches.(name, program)
+
+RecommendedBranchCourses(_course_, _branch_, _program_)
+  course -> Courses.code
+  (branch, program) -> Branches.(name, program)
+
+Registered(_student_, _course_)
+  student -> Students.idnr
+  course -> Courses.code
+
+Taken(_student_, _course_, grade)
+  student -> Students.idnr
+  course -> Courses.code
+
+WaitingList(_student_, _course_, position)
+  student -> Students.idnr
+  course -> LimitedCourses.code
+  UNIQUE (course, position)
+

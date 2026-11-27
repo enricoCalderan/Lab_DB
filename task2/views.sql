@@ -53,13 +53,13 @@ CREATE VIEW UnreadMandatory AS
 (
     SELECT idnr AS student, course
     FROM Students
-    JOIN MandatoryProgram USING (program)
+    JOIN MandatoryProgramCourses USING (program)
 )
 UNION
 (
     SELECT student, course
     FROM StudentBranches
-    JOIN MandatoryBranch
+    JOIN MandatoryBranchCourses
     USING (branch,program)
 )
 EXCEPT
@@ -74,7 +74,7 @@ CREATE VIEW RecommendedCourses AS(
     SELECT student, course, credits
     FROM PassedCourses
     JOIN StudentBranches USING (student)
-    JOIN RecommendedBranch USING (course, branch, program)
+    JOIN RecommendedBranchCourses USING (course, branch, program)
 );
 
 --SELECT * FROM RecommendedCourses;

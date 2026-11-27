@@ -1,5 +1,10 @@
 --This will be based on inserts.sql from Task 1, but extended with additional inserts required to work with your added/modified tables.
 
+INSERT INTO Departments VALUES ('Dep1','D1');
+INSERT INTO Departments VALUES ('Dep2','D2');
+
+INSERT INTO Programs VALUES ('Prog1','P1');
+INSERT INTO Programs VALUES ('Prog2','P2');
 INSERT INTO Branches VALUES ('B1','Prog1');
 INSERT INTO Branches VALUES ('B2','Prog1');
 INSERT INTO Branches VALUES ('B1','Prog2');
@@ -35,13 +40,13 @@ INSERT INTO StudentBranches VALUES ('3333333333','B1','Prog2');
 INSERT INTO StudentBranches VALUES ('4444444444','B1','Prog1');
 INSERT INTO StudentBranches VALUES ('5555555555','B1','Prog2');
 
-INSERT INTO MandatoryProgram VALUES ('CCC111','Prog1');
+INSERT INTO MandatoryProgramCourses VALUES ('CCC111','Prog1');
 
-INSERT INTO MandatoryBranch VALUES ('CCC333', 'B1', 'Prog1');
-INSERT INTO MandatoryBranch VALUES ('CCC444', 'B1', 'Prog2');
+INSERT INTO MandatoryBranchCourses VALUES ('CCC333', 'B1', 'Prog1');
+INSERT INTO MandatoryBranchCourses VALUES ('CCC444', 'B1', 'Prog2');
 
-INSERT INTO RecommendedBranch VALUES ('CCC222', 'B1', 'Prog1');
-INSERT INTO RecommendedBranch VALUES ('CCC333', 'B1', 'Prog2');
+INSERT INTO RecommendedBranchCourses VALUES ('CCC222', 'B1', 'Prog1');
+INSERT INTO RecommendedBranchCourses VALUES ('CCC333', 'B1', 'Prog2');
 
 INSERT INTO Taken VALUES('4444444444','CCC111','5');
 INSERT INTO Taken VALUES('4444444444','CCC222','5');
@@ -69,3 +74,11 @@ INSERT INTO Registered VALUES ('3333333333','CCC333');
 INSERT INTO WaitingList VALUES('3333333333','CCC222',1);
 INSERT INTO WaitingList VALUES('5555555555','CCC333',1);
 INSERT INTO WaitingList VALUES('6666666666','CCC333',2);
+
+INSERT INTO HostedBy VALUES ('Dep1','Prog1');
+INSERT INTO HostedBy VALUES ('Dep1','Prog2');
+INSERT INTO HostedBy VALUES ('Dep2','Prog1');
+INSERT INTO HostedBy VALUES ('Dep2','Prog2');
+
+INSERT INTO Prerequisites VALUES ('CCC222','CCC111');
+INSERT INTO Prerequisites VALUES ('CCC333','CCC111');
